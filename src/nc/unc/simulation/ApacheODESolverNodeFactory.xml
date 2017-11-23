@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<knimeNode icon="./default.png" type="Source" xmlns="http://knime.org/node/v2.8" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://knime.org/node/v2.10 http://knime.org/node/v2.10.xsd">
+    <name>ApacheODESolver</name>
+    
+    <shortDescription>
+        This node solves first order Ordinary Differential Equations (ODE) using the algorithms provided in the Apache Commons Math library.
+    </shortDescription>
+    
+    <fullDescription>
+        <intro> 
+        <p>
+        Ordinary Differential Equations (ODE) are mathematical tools used to model complex systems and to simulate their evolution. 
+        This node provides integrators to solve Initial Value Problems of the form y'=f(t,y) with t0 and y(t0)=y0 known. 
+        The integrators compute an estimate of y(t) from t=t0 to t=t1.
+        </p> 
+        
+        <p>
+        Example of the Lotka-Volterra equations (predator-prey):
+		<ul>
+			<li> dy0/dt = alpha * y0 - beta * y0 * y1 </li>
+			<li> dy1/dt = delta * y0 * y1 - gamma * y1</li>
+		</ul>
+		where
+		<ul>
+			<li>- y0 is the number of preys; </li>
+			<li>- y1 is the number of predators; </li>
+			<li>- dy0/dt and dy1/dt represent the growth rate of the two populations over time;</li>
+			<li>- t represents time;</li> 
+			<li>- alpha, beta, delat and gamma  are positive real parameters describing the interaction of the two species.</li>
+		</ul>
+      
+        </p>
+        
+        <p>This node is based on the ODE package developed by Apache Commons (Apache Commons Math TM, see http://commons.apache.org/proper/commons-math/userguide/ode.html) and it provides an integration of these algorithms in the KNIME platform.
+        Two types of integrators are available: Fixed step integrators and Adaptive step integrators.
+        </p>
+        <p>
+        Fixed step integrators are :
+        			<ol>
+        				<li>Euler -- order: 1</li>
+        				<li>Midpoint -- order: 2</li>
+        				<li>Classical Runge-Kutta -- order: 4</li>
+        				<li>Gill -- order: 4</li>
+        				<li>3/8 -- order: 4</li>
+        				<li>Luther -- order: 6</li>
+        			</ol>
+        </p>	
+        <p>Adaptive stepsize integrators are:
+        			<ol>
+        				<li>Higham and Hall 	-- integration order: 5 -- error estimation order: 4 </li>
+        				<li>Dormand-Prince 5(4) -- integration order: 5 -- error estimation order: 4</li>
+        				<li>Dormand-Prince  8(5,3) -- integration order: 8 -- error estimation order: 5 and 3</li>
+        				<li>Gragg-Bulirsch-Stoer -- integration order: variable (up to 18 by default) -- error estimation order: variable</li>
+        				<li>Adams-Bashforth -- integration order: variable -- error estimation order: variable</li>
+        				<li>Adams-Moulton -- integration order: variable -- error estimation order: variable</li>
+        			</ol>        	
+        </p>
+    
+              
+        </intro>
+        
+        
+        <tab name="Ordinary Differential Equations">
+        	<option name="Dimension">Add/remove an equation (min. 2)</option>
+
+            <option name="dyi/dt (with i\in[0,dimension[)">The differential equation associated to variable yi. 
+            The formulae used to compute derivatives must be written in JavaScript programming language (without the ";" at the end).
+            Variables are referenced in the formulae using "y0, y1, ... yi" notations.</option>
+
+            <option name="Initial state yi(t0)">Value at time t0 of variable yi</option>
+        </tab>
+        <tab name="Integrators">
+            <option name="Type">Type of integrator to use (fixed or adaptive)</option>
+            <option name="Integrator">Name of the integrator to use</option>
+            
+            <option name="Fixed integrator parameter: Step">Integration step</option>
+            
+            <option name="Adaptive stepsize integrator parameters: Minimal step">Minimal step (sign is irrelevant, regardless of integration direction, forward or backward), the last step can be smaller than this</option>            
+            <option name="Adaptive stepsize integrator parameters: Maximal step">Maximal step (sign is irrelevant, regardless of integration direction, forward or backward), the last step can be smaller than this</option>                    
+            <option name="Adaptive stepsize integrator parameters: Allowed absolute error">Allowed absolute error (tolerance)</option>
+            <option name="Adaptive stepsize integrator parameters: Allowed relative error">Allowed relative error (tolerance)</option>
+            
+            <option name="Integration parameters: Initial time">Initial time t0</option>
+            <option name="Integration parameters: Target time">Target time for the integration (can be set to a value smaller than t0 for backward integration)</option>            
+        </tab>
+        
+    </fullDescription>
+    
+    <ports>
+        
+        <!-- 
+			<inPort index="0" name="In-Port name">Description of first input port...</inPort>
+		-->		
+        <outPort index="0" name="Solutions of the integration process (continuous output)">Output intermediate results of the integration process, i.e. display values of all variables yi at each time step </outPort>
+        
+    </ports>    
+    <!--
+    <views>
+        <view index="0" name="name of first view">Description of first view...</view>
+        view index="1" name="name of second view">Description of second view...</view>
+    </views>
+    -->
+</knimeNode>

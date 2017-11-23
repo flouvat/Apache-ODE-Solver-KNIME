@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+
+   <!-- This is an example for providing an own category 
+      <extension
+         point="org.knime.workbench.repository.categories">
+      <category
+            description="Simulation tools"
+            icon="icons/default.png"
+            level-id="simu"
+            name="Simulation"
+            path="/"/>
+   </extension>
+   -->
+   <extension
+         point="org.knime.workbench.repository.categories">
+      <category
+      		description="Simulation tools"
+      		icon="icons/default.png"
+            level-id="simulation"
+            name="Simulation"
+            path="/"/>
+   </extension>
+      
+   <extension
+         point="org.knime.workbench.repository.nodes">
+      <node
+            category-path="/simulation"
+            factory-class="nc.unc.simulation.ApacheODESolverNodeFactory"
+            />
+   </extension>
+
+   
+</plugin>
