@@ -45,3 +45,19 @@ Adaptive stepsize integrators are:
         				<li>Adams-Bashforth -- integration order: variable -- error estimation order: variable</li>
         				<li>Adams-Moulton -- integration order: variable -- error estimation order: variable</li>
         			</ol>        	    
+
+## Installation in KNIME
+
+* Import the project in the Eclipse KNIME SDK (https://www.knime.com/downloads)
+* Generate a jar using the "Export deployable plug-ins and fragments" wizard
+* Copy the jar to the "dropins" folder of the KNIME / Eclipse installation
+
+
+## Contributors
+
+* Frédéric Flouvat, Associate professor in comptuer science, Institue of Exact and Applied Sciences, University of New Caledonia, New Caledonia.
+* Cyril Metayer, Associate professor in physics, Institue of Exact and Applied Sciences, University of New Caledonia, New Caledonia.
+
+
+## Feedbacks
+If you have any questions or suggestions concerning use and development of this KNIME node, please mail to Frédéric Flouvat.
