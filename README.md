@@ -1,6 +1,6 @@
 # A wrapper to integrate Apache ODE solvers in the KNIME analytics platform
 
-This KNIME node solves first order Ordinary Differential Equations (ODE) using the algorithms provided in the Apache Commons Math library.
+This KNIME node solves first order Ordinary Differential Equations (ODE) using the algorithms provided in the Apache Commons Math library (http://commons.apache.org/proper/commons-math/userguide/ode.html).
 
 Ordinary Differential Equations (ODE) are mathematical tools used to model complex systems and to simulate their evolution. 
 This node provides integrators to solve Initial Value Problems of the form y'=f(t,y) with t0 and y(t0)=y0 known. 
